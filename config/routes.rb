@@ -9,4 +9,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+   resources :catalogues do
+    collection do
+      get :search
+    end
+  end
+
+  resources :wishlists
+  resources :offers
+  resources :catalogue_variants
+
 end
