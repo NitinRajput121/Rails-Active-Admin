@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   resources :wishlists
   resources :offers
-  resources :catalogue_variants
+  resources :catalogue_variants do
+    collection do
+      post :emi
+    end
+  end
 
 end
