@@ -74,3 +74,9 @@ gem "sassc", "~> 2.4"
 
 gem "arctic_admin", "~> 4.3"
 gem 'twilio-ruby'
+
+gem 'pagy'
+
+gem 'active_model_serializers'
+
+

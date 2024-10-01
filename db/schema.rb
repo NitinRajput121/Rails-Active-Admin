@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_28_172614) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_30_080550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,28 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_28_172614) do
     t.index ["catalogue_variant_id"], name: "index_offers_on_catalogue_variant_id"
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "duration"
+    t.float "price"
+    t.text "details"
+    t.integer "plan_type"
+    t.integer "months"
+    t.decimal "price_monthly", precision: 10, scale: 2
+    t.decimal "price_yearly", precision: 10, scale: 2
+    t.integer "limit"
+    t.integer "limit_type"
+    t.boolean "discount", default: false
+    t.string "discount_type"
+    t.integer "discount_percentage", default: 0
+    t.text "benefits"
+    t.boolean "coming_soon", default: false
+    t.boolean "active", default: true
+    t.boolean "available", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sub_categories", force: :cascade do |t|
     t.string "name"
     t.integer "category_id"
@@ -110,11 +132,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_28_172614) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "digested_password"
+    t.string "password_digest"
     t.string "user_type"
-    t.string "authentication_type"
-    t.integer "country_code"
-    t.bigint "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "catalogue_variant_id"
+    t.integer "catalogue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

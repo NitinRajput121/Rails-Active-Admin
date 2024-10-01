@@ -1,4 +1,5 @@
 class WishlistsController < ApplicationController
+  
   before_action :set_user
 
   def create
@@ -19,7 +20,7 @@ class WishlistsController < ApplicationController
   private 
 
   def set_user
-    @user = Account.find(params[:account_id]) 
+    @user = User.find(params[:user_id]) 
   end
 
   def wishlist_params
