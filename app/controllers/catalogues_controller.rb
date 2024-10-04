@@ -51,8 +51,11 @@ class CataloguesController < ApplicationController
 #   end
 # end
 
+skip_before_action :authorize_request, only: [:create]
+
 
 def index
+
   sub_category_name = params[:sub_category_name]
   gender = params[:gender]
 
@@ -122,14 +125,5 @@ end
   def catalogue_params
     params.require(:catalogue).permit(:name, :description, :gender, :category_id, :sub_category_id, catalogue_variants_attributes: [:id, :price, :catalogue_variant_color_id, :catalogue_variant_size_id, :quantity, :_destroy])
   end
-
-
-  # def pagination_metadata(pagy)
-  #   {
-  #     current_page: pagy.page,
-  #     total_pages: pagy.pages,
-  #     total_count: pagy.count
-  #   }
-  # end
 
 end

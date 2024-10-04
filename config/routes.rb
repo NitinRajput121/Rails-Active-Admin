@@ -20,10 +20,20 @@ Rails.application.routes.draw do
   resources :offers
 
 
+  resources :users  do
+    collection do 
+      post :login
+    end
+  end
+
   resources :catalogue_variants do
     collection do
       get :emi
     end
   end
+
+
+  resources :carts
+  resources :cart_items
 
 end
