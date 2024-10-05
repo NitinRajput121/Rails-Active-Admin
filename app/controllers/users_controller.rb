@@ -66,6 +66,7 @@ end
 
     if user && user.authenticate(params[:password])
       token = encode_token({ user_id: user.id })
+      UserMailer.login_notification(user).deliver_now 
       # transfer_guest_cart_to_user(user)
       render json: { token: token, message: "Login successful" }, status: :ok
     else
