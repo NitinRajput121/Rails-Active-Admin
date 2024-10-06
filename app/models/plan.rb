@@ -38,7 +38,8 @@ class Plan < ApplicationRecord
   enum plan_type: { free: 0, paid: 1 }
   validates :price_monthly, :price_yearly, presence: true, if: :paid_plan?
   validates :discount, :discount_type, :discount_percentage, presence: true, if: :paid_plan?
-
+  validates :name, presence: true
+  validate :must_have_at_least_one_benefit
   # Custom method to check if the plan is paid
   def paid_plan?
     plan_type == 'paid'
@@ -81,6 +82,15 @@ class Plan < ApplicationRecord
       discounted_price
     else
       price_yearly
+    end
+  end
+
+
+  def must_have_at_least_one_benefit
+    if benefits.blank? || benefits.split(',').map(&:strip).empty?
+      errors.add(:benefits, 'Please provide at least one benefit')
+    elsif benefits.split(',').any? { |b| b.length > 200 }
+      errors.add(:benefits, 'Each benefit should not exceed 200 characters')
     end
   end
 end

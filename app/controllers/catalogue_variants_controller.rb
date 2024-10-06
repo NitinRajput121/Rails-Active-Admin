@@ -46,7 +46,6 @@ class CatalogueVariantsController < ApplicationController
 
 
 def emi
-  puts "hello"
   catalogue_variant = CatalogueVariant.find(params[:id])
   if !catalogue_variant
     render json:{message:"catalogue_variant not found"}
@@ -81,14 +80,5 @@ end
 
 
 
-# private 
-
-#   def pagination_metadata(pagy)
-#     {
-#       current_page: pagy.page,
-#       total_pages: pagy.pages,
-#       total_count: pagy.count
-#     }
-#   end
 
 end

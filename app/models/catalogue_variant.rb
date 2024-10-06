@@ -6,6 +6,10 @@ class CatalogueVariant < ApplicationRecord
 	has_many :wishlists
 
 	has_many :offers
+
+	has_many :order_items
+
+
 	
 
   has_many :attachments, class_name: 'CatalogueAttachment', foreign_key: 'catalogue_variant_id', dependent: :destroy

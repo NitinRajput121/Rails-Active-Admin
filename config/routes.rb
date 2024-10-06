@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :cart_items
 
+  post 'payments/purchase', to: 'payments#purchase'
+
 end
