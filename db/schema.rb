@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_05_203445) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_07_102817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -150,6 +150,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_05_203445) do
     t.boolean "coming_soon", default: false
     t.boolean "active", default: true
     t.boolean "available", default: true
+    t.float "discounted_price_mon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -162,11 +163,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_05_203445) do
     t.index ["category_id"], name: "index_sub_categories_on_category_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "user_id"
+    t.datetime "started_at"
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.string "user_type"
+    t.string "stripe_customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,5 @@
 class CartSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :token, :created_at, :total_amount, :cart_items
+  attributes :id, :user_id, :token, :created_at, :total_amount, :variants_name, :total_quantity
 
   def total_amount
     object.cart_items.sum do |item|
@@ -12,8 +12,15 @@ class CartSerializer < ActiveModel::Serializer
     end
   end
 
-   has_many :cart_items
+  def variants_name
+    object.cart_items.map do |item|
+      item.catalogue_variant.catalogue.name
+    end
+  end
 
+  def total_quantity
+     object.cart_items.sum(:quantity)
+  end
 
   
 

@@ -1,31 +1,3 @@
-# class CatalogueVariantSerializer < ActiveModel::Serializer
-#   attributes :id, :price
-
- 
-
-
-
-
- 
-
-
-
-#     attribute :color do |object|
-#        object.object.catalogue_variant_color.name
-#     end 
-
-
-#     attribute :size do |object|
-#        object.object.catalogue_variant_size.name
-#     end 
-
-# end
-
- # has_many :offers, if: -> { object.offers.any? }
- 
-   # belongs_to :catalogue_variant_size, serializer: CatalogueVariantSizeSerializer, if: -> { object.catalogue_variant_size.present? }
-
-  # belongs_to :catalogue_variant_color, serializer: CatalogueVariantColorSerializer, if: -> { object.catalogue_variant_color.present? } 
 
 
 class CatalogueVariantSerializer < ActiveModel::Serializer

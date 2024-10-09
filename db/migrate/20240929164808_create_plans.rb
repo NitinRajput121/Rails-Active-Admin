@@ -18,6 +18,8 @@ class CreatePlans < ActiveRecord::Migration[7.1]
     t.boolean "coming_soon", default: false
     t.boolean "active", default: true
     t.boolean "available", default: true
+    t.float "discounted_price_mon"
+
       t.timestamps
     end
   end

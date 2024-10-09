@@ -20,7 +20,7 @@ ActiveAdmin.register Catalogue do
       catalogue.category.name
     end
     column :subcategory do |catalogue|
-      catalogue. sub_category.name
+       catalogue.sub_category&.name || "No Subcategory"
     end
     column :created_at
     actions

@@ -1,5 +1,5 @@
 ActiveAdmin.register Category do
-  permit_params :name, sub_categories_attributes: [ :id, :name, :category_id, :_destroy ]
+  permit_params :name, sub_categories_attributes: [ :id, :name, :category_id ]
 
   index do
     selectable_column

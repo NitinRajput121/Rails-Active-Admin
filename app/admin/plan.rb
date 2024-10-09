@@ -1,17 +1,19 @@
 ActiveAdmin.register Plan do
-  permit_params :name, :duration, :price_monthly, :price_yearly, :discount, :discount_type, 
-                :discount_percentage, :details, :plan_type, :active, :available
+  permit_params :name, :months, :price_monthly, :price_yearly, :discount, :discount_type, 
+                :discount_percentage, :details, :plan_type, :active, :available, :discounted_price_mon
 
   # Index View customization
   index do
     selectable_column
     id_column
     column :name
+    column :months
     column :plan_type
     column :price_monthly
     column :price_yearly
     column :discount
     column :discount_percentage
+    column :discounted_price_mon
     column :active
     actions
   end
@@ -24,12 +26,14 @@ ActiveAdmin.register Plan do
   attributes_table do
     row :name
     row :plan_type
+    row :months
     row :price_monthly
     row :price_yearly
     row :discount
     row :discount_type
     row :discount_percentage
     row :details
+    row :discounted_price_mon
     row :active
     row :available
     row :created_at
@@ -65,7 +69,7 @@ end
  form do |f|
     f.inputs do
       f.input :name
-      f.input :duration
+      f.input :months
       f.input :plan_type, as: :select, collection: [["Free", "free"], ["Paid", "paid"]], input_html: { id: 'plan_plan_type' }
       f.input :details
       f.input :price_monthly, input_html: { id: 'plan_price_monthly' }
@@ -73,6 +77,7 @@ end
       f.input :discount, as: :select, collection: [["No", false], ["Yes", true]], input_html: { id: 'plan_discount' }
       f.input :discount_type, as: :select, collection: ["Percentage", "Fixed"], input_html: { id: 'plan_discount_type' }
       f.input :discount_percentage, input_html: { id: 'plan_discount_percentage' }
+      f.input :discounted_price_mon
       f.input :active
       f.input :available
 

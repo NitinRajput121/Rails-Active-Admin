@@ -13,6 +13,10 @@ class CartItemsController < ApplicationController
 
   def create
     cart_item = @cart.cart_items.find_or_initialize_by(catalogue_variant_id: cart_item_params[:catalogue_variant_id])
+  if cart_item.persisted?
+    render json: { message: "Item is already in cart" }, status: :ok
+    return
+  end
     cart_item.quantity ||= 0
     cart_item.quantity += cart_item_params[:quantity].to_i
     if cart_item.save
@@ -22,40 +26,18 @@ class CartItemsController < ApplicationController
     end
   end
 
-  #   def create
-  #   # Find existing cart item or create a new one
-  #   cart_item = @cart.cart_items.find_by(catalogue_variant_id: cart_item_params[:catalogue_variant_id])
-    
-  #   if cart_item
-  #     # If the cart item exists, increment its quantity
-  #     cart_item.quantity += cart_item_params[:quantity].to_i
-  #     if cart_item.save
-  #       render json: cart_item, status: :ok
-  #     else
-  #       render json: { error: cart_item.errors.full_messages }, status: :unprocessable_entity
-  #     end
-  #   else
-  #     # If the cart item doesn't exist, create a new one
-  #     cart_item = @cart.cart_items.new(cart_item_params)
-  #     if cart_item.save
-  #       render json: cart_item, status: :created
-  #     else
-  #       render json: { error: cart_item.errors.full_messages }, status: :unprocessable_entity
-  #     end
-  #   end
-  # end
 
 
-  
-
-  def update
-    cart_item = @cart.cart_items.find(params[:id])
-    if cart_item.update(cart_item_params)
-      render json: cart_item
-    else
-      render json: { error: cart_item.errors.full_messages }, status: :unprocessable_entity
-    end
+def update
+  cart_item = @cart.cart_items.find(params[:id])
+  cart_item.quantity += 1
+  if cart_item.save
+    render json: cart_item
+  else
+    render json: { error: cart_item.errors.full_messages }, status: :unprocessable_entity
   end
+end
+
 
   def destroy
     cart_item = @cart.cart_items.find(params[:id])
