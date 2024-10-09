@@ -1,0 +1,5 @@
+:scheduler:
+  :schedule:
+    subscription_expiration_job:
+      cron: '0 * * * *' 
+      class: SubscriptionExpirationJob  

@@ -84,3 +84,5 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'stripe'
 
 
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
