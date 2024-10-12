@@ -35,20 +35,19 @@
 
 
 class OffersController < ApplicationController
-  def index
-    # Ensure you are calling the pagy method correctly.
-    pagy, offers = pagy(
-      Offer.select(:id, :offer_name, :discount, :start_date, :end_date, :catalogue_variant_id)
-           .includes(:catalogue_variant)
-           .order(created_at: :desc),
-      items: 20
-    )
+def index
+  pagy, offers = pagy(
+    Offer.select(:id, :offer_name, :discount, :start_date, :end_date, :catalogue_variant_id)
+         .includes(:catalogue_variant)
+         .order(created_at: :desc),
+    items: 10
+  )
 
-    render json: {
-      offers: ActiveModelSerializers::SerializableResource.new(offers, each_serializer: OfferSerializer),
-      meta: pagination_metadata(pagy) # Make sure the method name matches
-    }
-  end
+  render json: {
+    offers: OfferSerializer.new(offers).serializable_hash[:data],
+    meta: pagination_metadata(pagy)
+  }
+end
 
   def create
     offer = Offer.new(offer_params)

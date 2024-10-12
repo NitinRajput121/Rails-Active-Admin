@@ -1,15 +1,13 @@
-# class CartItemsController < ApplicationController
-
-# end
 
 class CartItemsController < ApplicationController
 
   before_action :find_cart
 
-  def index
-    cart_items = @cart.cart_items
-    render json: cart_items
-  end
+def index
+  cart_items = @cart.cart_items
+  render json: CartItemSerializer.new(cart_items).serializable_hash[:data]
+end
+
 
   def create
     cart_item = @cart.cart_items.find_or_initialize_by(catalogue_variant_id: cart_item_params[:catalogue_variant_id])

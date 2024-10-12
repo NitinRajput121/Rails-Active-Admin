@@ -47,6 +47,10 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'email_spec'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -77,7 +81,10 @@ gem 'twilio-ruby'
 
 gem 'pagy'
 
-gem 'active_model_serializers'
+
+
+gem 'jsonapi-serializer'
+
 
 gem 'jwt'
 gem 'dotenv-rails', groups: [:development, :test]

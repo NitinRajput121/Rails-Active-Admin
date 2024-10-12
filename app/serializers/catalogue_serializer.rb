@@ -1,17 +1,17 @@
-class CatalogueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :created_at
 
-   
-  has_many :catalogue_variants, if: -> { object.catalogue_variants.any? }
+class CatalogueSerializer
+  include JSONAPI::Serializer
 
-    attribute :category do |object| 
-       object.object.category.name
-    end 
+  attributes :name, :description, :gender
 
-
-
-     attribute :sub_category do |object| 
-       object.object.sub_category.name 
-    end 
-
+  attribute :catalogue_variants do |object, params|
+      serializer = CatalogueVariantSerializer.new(
+        object.catalogue_variants, { params: params }
+      )
+      serializer.serializable_hash[:data]
+    end
 end
+
+
+
+

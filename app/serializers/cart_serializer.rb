@@ -1,4 +1,7 @@
-class CartSerializer < ActiveModel::Serializer
+class CartSerializer 
+
+ include JSONAPI::Serializer
+  
   attributes :id, :user_id, :token, :created_at, :total_amount, :variants_name, :total_quantity
 
   def total_amount

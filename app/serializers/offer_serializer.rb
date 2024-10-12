@@ -1,26 +1,25 @@
-class OfferSerializer < ActiveModel::Serializer
-  attributes :id, :offer_name, :discount, :start_date, :end_date, :discounted_price, :catalogue_name
+class OfferSerializer 
+
+ include JSONAPI::Serializer
+
+  attributes :id, :offer_name, :discount, :start_date, :end_date, :discounted_price
    
 
 
   attribute :original_price do |object|
-    object.object.catalogue_variant.price
+    object.catalogue_variant.price
   end
 
   attribute :quantity do |object|
-    object.object.catalogue_variant.quantity
+    object.catalogue_variant.quantity
   end
 
   def discounted_price
     object.discounted_price
   end
 
-  def catalogue_name
-    object.catalogue_variant.catalogue.name if object.catalogue_variant.catalogue
-  end
-
-  def catalogue_name
-    object.catalogue_variant.catalogue.name if object.catalogue_variant.catalogue
+  attribute :catalogue_name do |object|
+    object.catalogue_variant.catalogue.name
   end
 
 

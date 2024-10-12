@@ -1,4 +1,7 @@
-class CatalogueVariantSizeSerializer < ActiveModel::Serializer
+class CatalogueVariantSizeSerializer 
+
+ include JSONAPI::Serializer
+  
   attributes :id, :name
 
  

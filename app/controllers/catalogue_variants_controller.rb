@@ -1,33 +1,6 @@
 class CatalogueVariantsController < ApplicationController
 
 
-# def index
-#   catalogue_variants = CatalogueVariant.all
-
-#   render json: catalogue_variants.map { |catalogue_variant|
-#     {
-#       price: catalogue_variant.price.to_f,
-#       discounted_price: catalogue_variant.discounted_price.to_f,
-#       offers: catalogue_variant.offers.any? ? catalogue_variant.offers.map { |offer| 
-#         { 
-#           offer_name: offer.offer_name, 
-#           discount: offer.discount.to_f 
-#         } 
-#       } : nil # If there are no offers, it will return nil
-#     }
-#   }
-# end
-
-
-  # def index
-  #   catalogue_variants = CatalogueVariant.includes(:offers).all
-
-  #   # Use ActiveModelSerializers to serialize the response
-  #   render json: catalogue_variants, each_serializer: CatalogueVariantSerializer
-  # end
-
-
-
   def index
     # Paginate catalogue variants with Pagy and include associations
     pagy, catalogue_variants = pagy(

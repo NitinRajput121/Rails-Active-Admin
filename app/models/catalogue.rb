@@ -1,6 +1,6 @@
 class Catalogue < ApplicationRecord
 	has_many :catalogue_variants, dependent: :destroy
-	has_many :caart_items
+	has_many :cart_items
     has_many :wishlists
 	belongs_to :category
 	belongs_to :sub_category
