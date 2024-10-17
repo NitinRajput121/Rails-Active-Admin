@@ -93,3 +93,5 @@ gem 'stripe'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
+
+gem 'rack-cors', require: 'rack/cors'

@@ -1,5 +1,9 @@
 development:
   adapter: async
+  allowed_origins:
+    - '*'
+
+
 
 test:
   adapter: test

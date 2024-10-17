@@ -48,4 +48,11 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
+
+  resources :chats do
+    resources :messages
+  end
+
+  mount ActionCable.server => '/cable'
+
 end

@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders
   has_one :subscription
+  has_many :chats_as_customer, class_name: 'Chat'
+  has_many :chats_as_seller, class_name: 'Chat'
+  has_many :messages
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
