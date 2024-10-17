@@ -4,7 +4,8 @@ class ChatChannel < ApplicationCable::Channel
     stream_for chat
   end
 
-  def unsubscribed
-    # Any cleanup when the user leaves the channel
+  def receive(data)
+    # Handle incoming messages
+    ActionCable.server.broadcast("chat_#{params[:chat_id]}", data)
   end
 end
