@@ -1,7 +1,11 @@
 development:
-  adapter: async
-  allowed_origins:
-    - '*'
+  adapter: postgresql
+  allowed_request_origins:
+    - "http://localhost:3000"   # Adjust port if necessary
+    - "http://127.0.0.1:3000"
+    - "http://localhost"        # Allow direct localhost access
+    - "http://127.0.0.1"
+
 
 
 
