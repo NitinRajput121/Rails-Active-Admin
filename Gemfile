@@ -76,7 +76,7 @@ gem "activeadmin", "~> 3.2"
 
 gem "sassc", "~> 2.4"
 
-gem "arctic_admin", "~> 4.3"
+
 gem 'twilio-ruby'
 
 gem 'pagy'
@@ -95,3 +95,9 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
 gem 'rack-cors', require: 'rack/cors'
+
+gem 'active_admin_flat_skin'
+gem 'font-awesome-rails'
+
+
+

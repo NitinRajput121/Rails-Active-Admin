@@ -10,7 +10,11 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
-@import "active_admin_custom.css";
+// Include the Flat Skin theme
+@import "active_admin_flat_skin";
+// Include Font Awesome
+@import "font-awesome.css"; 
+
 
 
 // Overriding any non-variable Sass must be done after the fact.
@@ -18,3 +22,11 @@
 //
 //   .status_tag { background: #6090DB; }
 
+
+#active_admin_content #sidebar {
+    margin-top: -30px;
+}
+
+html #active_admin_content .table_tools {
+    height: 100px;
+}

@@ -50,6 +50,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_admin_flat_skin (0.1.2)
     activeadmin (3.2.5)
       arbre (~> 1.2, >= 1.2.1)
       csv
@@ -90,9 +91,6 @@ GEM
     arbre (1.7.0)
       activesupport (>= 3.0.0)
       ruby2_keywords (>= 0.0.2)
-    arctic_admin (4.3.1)
-      activeadmin (>= 1.1.0, < 4.0)
-      font-awesome-sass (~> 6.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
@@ -150,8 +148,8 @@ GEM
     faraday-net_http (3.3.0)
       net-http
     ffi (1.17.0)
-    font-awesome-sass (6.5.2)
-      sassc (~> 2.0)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
@@ -400,8 +398,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_admin_flat_skin
   activeadmin (~> 3.2)
-  arctic_admin (~> 4.3)
   bcrypt (~> 3.1.7)
   bootsnap
   capybara
@@ -410,6 +408,7 @@ DEPENDENCIES
   dotenv-rails
   email_spec
   factory_bot_rails
+  font-awesome-rails
   importmap-rails
   jbuilder
   jsonapi-serializer

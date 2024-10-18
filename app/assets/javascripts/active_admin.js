@@ -1,4 +1,5 @@
 //= require active_admin/base
+//= require active_admin_flat_skin
 
 // document.addEventListener('DOMContentLoaded', function() {
 //   var planTypeField = document.getElementById('plan_plan_type'); // Correct ID
